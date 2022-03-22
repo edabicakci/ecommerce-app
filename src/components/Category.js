@@ -7,7 +7,7 @@ const Category = (props) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/${category.id}/productList`)
+    navigate(`/${category.id}/products`)
 
   }
   return (

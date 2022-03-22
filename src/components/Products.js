@@ -16,7 +16,6 @@ useEffect(() => {
 const getProducts = async (categoryId) =>{
     //categoryId is string, convert to number
     // try catch yap 
-    o
     const allProducts = await baseService.get("/products")
     const productsWithCategoryId = allProducts.filter(product => product.categoryId === +categoryId)
     setProducts([...productsWithCategoryId])   
