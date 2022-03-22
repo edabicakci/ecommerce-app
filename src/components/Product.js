@@ -2,13 +2,13 @@ import React from "react";
 import "./styles.css";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { CartContext } from "../contexts/CartContext";
+import  CartContext  from "../contexts/CartContext";
 
 const Product = (props) => {
   let { product } = props;
   const navigate = useNavigate();
 
-  const [ cart, setCart ] = useContext(CartContext);
+  const {cart, setCart } = useContext(CartContext);
 
   const showProductDetail = () => {
     navigate(`/${product.id}/detail`, { state: { product } });

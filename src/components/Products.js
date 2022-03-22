@@ -1,30 +1,30 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react';
-import { baseService } from '../network/services/baseService'
+
 import Product from './Product'
 
-const Products = () => {
+const Products = (props) => {
 const {categoryId} = useParams();
-const [products, setProducts] = useState([])
+const {products} = props
+const [productsWithCategoryId, setProductsWithCategoryId] = useState([])
+
 
 useEffect(() => {
   getProducts(categoryId)
 }, [categoryId])
 
 
-const getProducts = async (categoryId) =>{
-    //categoryId is string, convert to number
-    // try catch yap 
-    const allProducts = await baseService.get("/products")
-    const productsWithCategoryId = allProducts.filter(product => product.categoryId === +categoryId)
-    setProducts([...productsWithCategoryId])   
- }
+const getProducts = (categoryId) => {
+  //categoryId is string, convert to number
+  const data = products.filter((product) => product.categoryId === +categoryId);
+  setProductsWithCategoryId([...data])
+}
 
   return (
     <div>
          <h1 className='h1'> Products </h1>
-        { products && products.map((product, key) => <Product key={key} product = {product}/>)}
+        { productsWithCategoryId && productsWithCategoryId.map((product, key) => <Product key={key} product = {product}/>)}
     </div>
   )
 }

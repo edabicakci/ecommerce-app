@@ -1,22 +1,42 @@
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { baseService } from "./network/services/baseService";
 import HomePage from "./components/HomePage";
 import Products from "./components/Products";
 import ProductDetail from "./components/ProductDetail";
-import { CartContext } from "./contexts/CartContext";
+import {CartProvider} from "./contexts/CartContext"
 
 function App() {
-  const [cart, setCart] = useState([]);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+   getProducts()
+  }, [])
+  
+
+  const getProducts = async () => {
+    try {
+      const data = await baseService.get("/products");
+      setProducts([...data])
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
   return (
-    <CartContext.Provider value={[cart, setCart ]}>
+    <>
+     <CartProvider>
       <Router>
         <Routes>
-          <Route exact path="/" element={<HomePage />} />
-          <Route path="/:categoryId/products" element={<Products />} />
+          <Route exact path="/" element={ products.length && <HomePage products={products} />} />
+          <Route path="/:categoryId/products" element={ products.length && <Products products={products} />} />
           <Route path="/:productId/detail" element={<ProductDetail />} />
         </Routes>
       </Router>
-    </CartContext.Provider>
+    </CartProvider> 
+    </>
+   
+   
   );
 }
 

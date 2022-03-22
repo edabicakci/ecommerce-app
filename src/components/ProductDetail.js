@@ -1,12 +1,12 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { useContext } from "react";
-import { CartContext } from "../contexts/CartContext";
+import  CartContext  from "../contexts/CartContext";
 
 const ProductDetail = () => {
   const { state } = useLocation();
   let { product } = state;
-  const [cart, setCart] = useContext(CartContext);
+  const {cart, setCart } = useContext(CartContext);
 
   const addCart = () => {
     if (!cart.some((cartItem) => cartItem.id === product.id)) {
