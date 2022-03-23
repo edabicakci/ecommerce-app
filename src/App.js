@@ -6,6 +6,7 @@ import Products from "./components/Products";
 import ProductDetail from "./components/ProductDetail";
 import {CartProvider} from "./contexts/CartContext"
 import Header from "./components/Header";
+import Cart from "./components/Cart";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -27,12 +28,14 @@ function App() {
   return (
     <>
      <CartProvider>
-       <Header/>
+      
       <Router>
+      <Header/>
         <Routes>
           <Route exact path="/" element={ products.length && <HomePage products={products} />} />
           <Route path="/:categoryId/products" element={ products.length && <Products products={products} />} />
           <Route path="/:productId/detail" element={<ProductDetail />} />
+          <Route path="/myCart" element={ <Cart/>} />
         </Routes>
       </Router>
     </CartProvider> 
