@@ -5,10 +5,10 @@ import { useState, useEffect } from "react";
 
 const HomePage = ({ products }) => {
   const [firstTenProduct, setFirstTenProduct] = useState([]);
-  
+
   useEffect(() => {
     listTenProducts();
-  },[]);
+  }, []);
 
   const listTenProducts = () => {
     const data = [];
@@ -19,14 +19,16 @@ const HomePage = ({ products }) => {
   };
 
   return (
-    <>
-      <h1 className="h1"> Welcome </h1>
-      <Categories />
-
-      {firstTenProduct.length && firstTenProduct.map((product, key) => (
-          <Product key={key} product={product} />
-        ))}
-    </>
+    <div className="float-container">
+      <div className="float-child">  <Categories /></div>
+      
+      <div className = "float-child">
+        {firstTenProduct.length &&
+          firstTenProduct.map((product, key) => (
+            <Product key={key} product={product} />
+          ))}
+      </div>
+    </div>
   );
 };
 

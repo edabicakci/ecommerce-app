@@ -5,6 +5,7 @@ import HomePage from "./components/HomePage";
 import Products from "./components/Products";
 import ProductDetail from "./components/ProductDetail";
 import {CartProvider} from "./contexts/CartContext"
+import Header from "./components/Header";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -26,6 +27,7 @@ function App() {
   return (
     <>
      <CartProvider>
+       <Header/>
       <Router>
         <Routes>
           <Route exact path="/" element={ products.length && <HomePage products={products} />} />
