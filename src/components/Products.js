@@ -24,7 +24,7 @@ const getProducts = (categoryId) => {
   return (
     <div>
          <h1 className='h1'> Products </h1>
-        { productsWithCategoryId && productsWithCategoryId.map((product, key) => <Product key={key} product = {product}/>)}
+        { productsWithCategoryId && productsWithCategoryId.map((product, key) => <Product key={key} isInCart = {false} product = {product}/>)}
     </div>
   )
 }

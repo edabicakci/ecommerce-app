@@ -19,7 +19,9 @@ const ProductDetail = () => {
     }
   };
 
+
   return (
+    
     <div className="productDetail">
       <h1>{product.name}</h1>
       <p> Unit Price: {product.unitPrice}</p>
