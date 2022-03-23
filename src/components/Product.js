@@ -29,19 +29,13 @@ const Product = (props) => {
     setCart([...updatedCart]);
   };
 
-  
   return (
     <>
       <div className="product" onClick={showProductDetail}>
         <p>{product.name}</p>
         <p>Unit Price: {product.unitPrice}</p>
         <p>Stock: {product.unitsInStock}</p>
-        {isInCart ?
-        <> 
-        <p> Piece: {product.count} </p> 
-        <p> Total Price: {(product.count * product.unitPrice).toFixed(2)} TL</p> 
-        </>
-         : null}
+        {isInCart ? <p> Total Price: {(product.count * product.unitPrice).toFixed(2)}</p> : null}
       </div>
 
       <div>
