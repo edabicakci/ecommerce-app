@@ -5,16 +5,17 @@ const Header = () => {
   const navigate = useNavigate();
 
   const showCartComponent = () => {
-    navigate("/mycart");
+    navigate("/myCart");
+  };
+
+  const showOrderComponent = () => {
+    navigate("/myOrders");
   };
 
   return (
     <div className="is-sticky">
-      <img
-        onClick={showCartComponent}
-        src="./images/cart.jpg"
-        alt="Sepetim"
-      />
+      <img onClick={showCartComponent} src="./images/cart.jpg" alt="Sepetim" />
+      <img onClick={showOrderComponent} src="./images/order.jpg" alt="Siparişlerim" />
     </div>
   );
 };
