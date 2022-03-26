@@ -4,19 +4,19 @@ import { useState, useEffect } from 'react';
 
 import Product from './Product'
 
-const Products = (props) => {
+const Products = ({getProducts}) => {
 const {categoryId} = useParams();
-const {products} = props
 const [productsWithCategoryId, setProductsWithCategoryId] = useState([])
 
 
 useEffect(() => {
-  getProducts(categoryId)
+  getProductsByCategoryId(categoryId)
 }, [categoryId])
 
 
-const getProducts = (categoryId) => {
+const getProductsByCategoryId = async (categoryId) => {
   //categoryId is string, convert to number
+  const products = await getProducts()
   const data = products.filter((product) => product.categoryId === +categoryId);
   setProductsWithCategoryId([...data])
 }
