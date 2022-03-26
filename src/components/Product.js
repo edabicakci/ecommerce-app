@@ -11,11 +11,11 @@ const Product = (props) => {
   const { cart, setCart } = useContext(CartContext);
 
   const showProductDetail = () => {
-    navigate(`/${product.id}/detail`, { state: { product } });
+    navigate(`/${product.id}/detail`);
   };
   const addCart = () => {
     if (!cart.some((cartItem) => cartItem.id === product.id)) {
-      product = { ...product, count: 1 };
+      product = { ...product, "count": 1 };
       setCart([...cart, product]);
     } else {
       let cartItem = cart.find((cartItem) => cartItem.id === product.id);

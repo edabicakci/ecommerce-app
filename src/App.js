@@ -37,7 +37,7 @@ function App() {
     console.log("count", count);
     setTotalCartCount(count);
   }
-
+  
   return (
             <Layout className="layout">
                 <Header>

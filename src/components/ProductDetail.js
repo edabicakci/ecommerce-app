@@ -1,12 +1,27 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
-import { useContext } from "react";
+import { useParams } from "react-router-dom";
+import { useState, useContext, useEffect } from "react";
 import  CartContext  from "../contexts/CartContext";
+import { baseService } from "../network/services/baseService";
 
 const ProductDetail = () => {
-  const { state } = useLocation();
-  let { product } = state;
   const {cart, setCart } = useContext(CartContext);
+  const [product, setProduct] = useState({})
+  const {id} = useParams()
+
+  useEffect(() => {
+    getProduct()
+  }, [])
+  
+
+  const getProduct = async() => {
+    try{
+      const data = await baseService.get(`/products/${id}`)
+      setProduct(data)
+    }catch(error){
+      console.log("Error", error);
+    }
+  }
 
   const addCart = () => {
     if (!cart.some((cartItem) => cartItem.id === product.id)) {
@@ -18,7 +33,6 @@ const ProductDetail = () => {
       setCart([...cart])
     }
   };
-
 
   return (
     
