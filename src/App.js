@@ -15,7 +15,13 @@ import { HomeOutlined, ShoppingCartOutlined, UnorderedListOutlined } from '@ant-
 function App() {
   const { Header, Content, Footer } = Layout;
   const [totalCartCount, setTotalCartCount] = useState(0)
+  const [customerID, setCustomerID] = useState("")
   const { cart } = useContext(CartContext);
+
+  useEffect(() => {
+    generateCustomerId(5)
+  }, [])
+  
 
   useEffect(() => {
    showCartCount()
@@ -34,8 +40,18 @@ function App() {
   const showCartCount = () => {
     let count = 0; 
     cart.map(cartItem => count += cartItem.count )
-    console.log("count", count);
     setTotalCartCount(count);
+  }
+
+  const generateCustomerId = (length) =>  {
+    let result           = '';
+    let characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let charactersLength = characters.length;
+    for ( let i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+   }
+   setCustomerID("aaa"+ result)
+   console.log("customerID", customerID);
   }
   
   return (
@@ -54,8 +70,8 @@ function App() {
                         <Route exact path="/" element={ <HomePage getProducts={getProducts} />} />
                         <Route path="/:categoryId/products" element={<Products getProducts={getProducts} />} />
                         <Route path="/:productId/detail" element={<ProductDetail />} />
-                        <Route path="/myCart" element={ <Cart/>} />
-                        <Route path="/myOrders" element={ <Orders/>} />
+                        <Route path="/myCart" element={ <Cart customerID = {customerID}/>} />
+                        <Route path="/myOrders" element={ <Orders custId = {customerID}/>} />
                         <Route path='*' element={<NotFoundPage />} />
                         </Routes>
                     </div>

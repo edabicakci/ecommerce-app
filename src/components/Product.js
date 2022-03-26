@@ -3,6 +3,7 @@ import "./styles.css";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import CartContext from "../contexts/CartContext";
+import { Card } from 'antd';
 
 const Product = (props) => {
   let { product, isInCart } = props;
@@ -30,9 +31,19 @@ const Product = (props) => {
   };
 
   return (
-    <>
-      <div className="product" onClick={showProductDetail}>
-        <p>{product.name}</p>
+    <Card
+    hoverable
+    style={{ width: 300, margin: 20}}
+    cover={<div style={{ overflow: "hidden", height: "100px" , width: "100px"}}>
+    <img
+      alt="example"
+      style={{ height: "100%" }}
+      src="https://image.shutterstock.com/image-vector/vector-illustration-9-archive-icons-600w-1162701376.jpg"
+    />
+  </div>}
+    onClick = {showProductDetail}>
+      <> 
+    <p>{product.name}</p>
         <p>Unit Price: {product.unitPrice}</p>
         <p>Stock: {product.unitsInStock}</p>
         {isInCart ?
@@ -41,7 +52,6 @@ const Product = (props) => {
         <p> Total Price: {(product.count * product.unitPrice).toFixed(2)} TL</p> 
         </>
          : null}
-      </div>
 
       <div>
         {isInCart ? 
@@ -49,7 +59,8 @@ const Product = (props) => {
           : ( <button onClick={addCart}> Sepete Ekle</button>)
         }
       </div>
-    </>
+      </>
+  </Card> 
   );
 };
 

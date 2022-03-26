@@ -1,16 +1,3 @@
-.category {
-    background: #fff;
-    position: relative;
-    border-radius: 5px;
-    padding: 20px;
-    margin: 10px;
-    width: 90%;
-    color: #333;
-    flex-basis: width;
-    background-color: rgb(165, 230, 230);
-  }
-
-
   .product {
     background: rgb(255, 255, 255);
     position: relative;
@@ -48,25 +35,7 @@
     background-color: rgb(165, 230, 230);
   }
 
-  .h1{
-    text-align: center;
-  }
-  .is-sticky {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 999;
-    box-shadow: 0 2px 24px 0 rgb(0 0 0 / 15%);
-    background-color: #aea0c4 !important;
-    animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
-    padding-top: 50px;
-    padding-bottom: 0px;
-}
-
-
 .float-container {
-  border: 3px solid #fff;
   padding: 20px;
 }
 

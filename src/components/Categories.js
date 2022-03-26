@@ -17,7 +17,7 @@ const Categories = () => {
     
 
   return (
-    <div>
+    <div className="float-container">
         {categories.map((category, key) =>  <Category key = {key} category = {category}/>)}
     </div>
   )
