@@ -22,14 +22,13 @@ const getProductsByCategoryId = async (categoryId) => {
 }
 
   return (
-    <Row type="flex" gutter={16}>
-    { productsWithCategoryId && productsWithCategoryId.map((product,key) =>{
-      return <Col span={12}  style={{paddingTop: '8px', paddingBottom: '8px'}}>
+    <Row style = {{marginTop: "5%"}}>
+      {productsWithCategoryId && productsWithCategoryId.map((product,key) =>
+        <Col xs={24} xl={8} >
           <Product key={key} isInCart = {false} product = {product}/>
-      </Col>;
-    })}
-  </Row>
-  )
-}
+      </Col>)}
+    </Row>
+  );
+};
 
 export default Products

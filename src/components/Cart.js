@@ -33,21 +33,18 @@ const Cart = ({ customerID }) => {
     }
   };
   return (
-    <>
-   
-    <Button style ={{ margin:"1%"}} className="btn" type="primary" onClick ={deleteCart}> Sepeti Boşalt </Button>
-    <Button style ={{ margin:"1%"}} className="btn" type="primary" onClick ={orderCart}> Sipariş Ver </Button>
-    <Row type="flex">
-    {cart.length === 0 ? (
-        <h1>Sepetiniz Boş</h1>
-      ) :  cart.map((cartItem, key) => {
-        return <Col xs={24} xl={8} >
+    <div style={{marginTop: "5%"}}>
+      <Button style ={{ margin:"1%"}} className="btn" type="primary" onClick ={deleteCart}> Sepeti Boşalt </Button>
+      <Button style ={{ margin:"1%"}} className="btn" type="primary" onClick ={orderCart}> Sipariş Ver </Button>
+      <Row>
+        {cart.length > 0 ?  cart.map((cartItem, key) => 
+          <Col xs={24} xl={8} >
             <Product key={key} isInCart = {true} product = {cartItem}/>
-        </Col>;
-      })}
-
-    </Row>
-    </>
+          </Col>)
+          : <h1 style = {{marginLeft: "1%"}}>Sepetiniz Boş</h1>
+       }
+      </Row>
+    </div>
   );
 };
 

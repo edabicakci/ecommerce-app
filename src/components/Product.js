@@ -1,12 +1,13 @@
 import React from "react";
 import "./styles.css";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import CartContext from "../contexts/CartContext";
-import { Card, Button} from 'antd';
+import { Card, Button, Modal } from 'antd';
 
 const Product = (props) => {
-  let { product, isInCart, isInHomePage } = props;
+  const { product, isInCart, isInHomePage } = props;
+  const [isModalVisible, setIsModalVisible] = useState(false)
   const navigate = useNavigate();
 
   const { cart, setCart } = useContext(CartContext);
@@ -15,13 +16,17 @@ const Product = (props) => {
     navigate(`/${product.id}/detail`);
   };
   const addCart = () => {
-    if (!cart.some((cartItem) => cartItem.id === product.id)) {
-      product = { ...product, "count": 1 };
-      setCart([...cart, product]);
-    } else {
-      let cartItem = cart.find((cartItem) => cartItem.id === product.id);
-      cartItem.count += 1;
-      setCart([...cart]);
+    if (product.unitsInStock !== 0 ){
+      if (!cart.some((cartItem) => cartItem.id === product.id)) {
+        const cartProduct = { ...product, "count": 1 };
+        setCart([...cart, cartProduct]);
+      } else {
+        let cartItem = cart.find((cartItem) => cartItem.id === product.id);
+        cartItem.count += 1;
+        setCart([...cart]);
+      }
+    }else{
+      setIsModalVisible(true);
     }
   };
 
@@ -30,7 +35,16 @@ const Product = (props) => {
     setCart([...updatedCart]);
   };
 
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
   return (
+  <>
     <Card
     hoverable
     className={isInHomePage? "productInHomePage" : "product"}
@@ -55,7 +69,11 @@ const Product = (props) => {
         </>
          : null}
       </div>
-  </Card> 
+    </Card> 
+    <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+          <p>Ürün stoklarda kalmamıştır!</p>
+    </Modal>
+  </>
   );
 };
 

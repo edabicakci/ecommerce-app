@@ -56,7 +56,7 @@ function App() {
   
   return (
             <Layout className="layout">
-                <Header>
+                <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
                     <div className="logo" />
                     <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
                         <Menu.Item key="1"><Link to={'/'}>Home</Link> <HomeOutlined /> </Menu.Item>
@@ -77,7 +77,7 @@ function App() {
                     </div>
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>
-                    Ant Design ©2018 Created by Ant UED
+                     E-Commerce App ©2022 
                 </Footer>
             </Layout>
   );

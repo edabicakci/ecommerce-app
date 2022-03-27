@@ -3,9 +3,10 @@ import { useParams } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
 import  CartContext  from "../contexts/CartContext";
 import { baseService } from "../network/services/baseService";
-import { Card, Button } from "antd"
+import { Card, Button, Modal } from "antd"
 
 const ProductDetail = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false)
   const {cart, setCart } = useContext(CartContext);
   const [product, setProduct] = useState({})
   const {productId} = useParams()
@@ -13,7 +14,6 @@ const ProductDetail = () => {
   useEffect(() => {
     getProduct()
   }, [])
-  
 
   const getProduct = async() => {
     try{
@@ -25,17 +25,31 @@ const ProductDetail = () => {
   }
 
   const addCart = () => {
-    if (!cart.some((cartItem) => cartItem.id === product.id)) {
-      const cartProduct = { ...product, "count": 1 };
-      setCart([...cart, cartProduct])
-    } else {
-      let cartItem = cart.find((cartItem) => cartItem.id === product.id)
-      cartItem.count += 1;
-      setCart([...cart])
+    if (product.unitsInStock !== 0 ){
+      if (!cart.some((cartItem) => cartItem.id === product.id)) {
+        const cartProduct = { ...product, "count": 1 };
+        setCart([...cart, cartProduct]);
+      } else {
+        let cartItem = cart.find((cartItem) => cartItem.id === product.id);
+        cartItem.count += 1;
+        setCart([...cart]);
+      }
+    }else{
+      setIsModalVisible(true);
     }
   };
 
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
   return (
+    <> 
     <Card
       hoverable
       className="product"
@@ -56,7 +70,11 @@ const ProductDetail = () => {
               Supplier Information: {product.supplier ?( product.supplier?.companyName)
               : "-"}
             </p>
-    </Card>
+            </Card>
+              <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+              <p>Ürün stoklarda kalmamıştır!</p>
+               </Modal>
+          </>
     
   );
 };

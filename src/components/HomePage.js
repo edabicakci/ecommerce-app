@@ -23,11 +23,11 @@ const HomePage = ({ getProducts }) => {
   return (
     <Row>
       <Col span={12}>
-        <h1 style={{ marginLeft: "5%", marginTop: "1%" }}> Categories </h1>
+        <h1 style={{ marginLeft: "5%", marginTop: "10%" }}> Categories </h1>
         <Categories />
       </Col>
       <Col span={12}>
-        <h1 style={{ marginLeft: "5%", marginTop: "1%" }}> Top Products</h1>
+        <h1 style={{ marginLeft: "5%", marginTop: "10%" }}> Top Products</h1>
         <Row type="flex" style={{ paddingLeft: "5%", paddingRight: "5%" }}>
           {firstTenProduct.length && firstTenProduct.map((product, key) => {
               return (
