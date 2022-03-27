@@ -28,14 +28,11 @@ const HomePage = ({ getProducts }) => {
       </Col>
       <Col span={12}>
         <h1 style={{ marginLeft: "5%", marginTop: "10%" }}> Top Products</h1>
-        <Row type="flex" style={{ paddingLeft: "5%", paddingRight: "5%" }}>
-          {firstTenProduct.length && firstTenProduct.map((product, key) => {
-              return (
-                <Col xs={24} xl={8} style={{ paddingTop: "5%", paddingBottom: "5%" }}>
-                  <Product isInHomePage = {true} key={key} product={product} />
-                </Col>
-              );
-            })}
+        <Row style={{ paddingLeft: "5%", paddingRight: "5%" }}>
+          {firstTenProduct.length && firstTenProduct.map((product, key) => 
+          <Col xs={24} xl={8} style={{ paddingTop: "1%", paddingBottom: "1%" }}>
+            <Product isInHomePage = {true} key={key} product={product} />
+          </Col> )}
         </Row>
       </Col>
     </Row>

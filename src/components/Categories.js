@@ -19,14 +19,12 @@ const Categories = () => {
 
   return (
     <Row type="flex" style={{paddingLeft: '5%', paddingRight: '5%'}}>
-    {categories.map((category,key) =>{
-      return <Col xs={24} xl={8} style={{paddingTop: '5%', paddingBottom: '5%'}}>
+      {categories.map((category,key) =>
+        <Col xs={24} xl={8} style={{paddingTop: '1%', paddingBottom: '1%'}}>
           <Category key = {key} category = {category}/>
-      </Col>;
-    })}
-  </Row>
-
-  )
-}
+        </Col>)}
+    </Row>
+  );
+};
 
 export default Categories
