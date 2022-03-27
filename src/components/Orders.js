@@ -4,10 +4,9 @@ import { baseService } from "../network/services/baseService";
 import Order from "./Order";
 import { Row, Col } from "antd";
 
-const Orders = ({ custId }) => {
+const Orders = ({ customerID }) => {
   const [orders, setOrders] = useState([]);
-  const [customerID, setCustomerID] = useState(custId);
-
+  
   useEffect(() => {
     getOrders();
   }, []);
@@ -16,15 +15,13 @@ const Orders = ({ custId }) => {
     try {
       const orderData = await baseService.get("/orders");
       console.log("orders", orderData);
-      console.log("custId", custId);
-      console.log("first", customerID);
-      setCustomerID(custId);
-      const _orderData = orderData.filter(
+      console.log("orders customerID", customerID);
+      const filteredData = orderData.filter(
         (order) => order.customerId === customerID
       );
-      console.log("orderData", _orderData);
-      setOrders([..._orderData]);
-      console.log("customerId:", customerID);
+      console.log("orderData", filteredData);
+      setOrders(filteredData);
+
     } catch (error) {
       console.log("Error", error);
     }
@@ -33,7 +30,7 @@ const Orders = ({ custId }) => {
   return (
     <Row style = {{marginTop: "6%"}}>
       {orders.length > 0 ? orders.map((order, key) =>   
-        <Col xs={24} xl={8}> 
+        <Col key = {key} xs={24} xl={8}> 
           <Order key={key} order={order}/> 
         </Col>)
         : <h1>Henüz Sipariş Vermediniz!</h1>

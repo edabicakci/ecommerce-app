@@ -71,7 +71,7 @@ function App() {
                         <Route path="/:categoryId/products" element={<Products getProducts={getProducts} />} />
                         <Route path="/:productId/detail" element={<ProductDetail />} />
                         <Route path="/myCart" element={ <Cart customerID = {customerID}/>} />
-                        <Route path="/myOrders" element={ <Orders custId = {customerID}/>} />
+                        <Route path="/myOrders" element={ <Orders customerID = {customerID}/>} />
                         <Route path='*' element={<NotFoundPage />} />
                         </Routes>
                     </div>

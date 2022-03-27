@@ -34,11 +34,12 @@ const Cart = ({ customerID }) => {
   };
   return (
     <div style={{marginTop: "5%"}}>
+      {console.log("cart customerid", customerID)}
       <Button style ={{ margin:"1%", background: "black", borderColor: "black"}}  className="btn" type="primary" onClick ={deleteCart}> Sepeti Boşalt </Button>
       <Button style ={{ margin:"1%", background: "black", borderColor: "black"}} className="btn" type="primary" onClick ={orderCart}> Sipariş Ver </Button>
       <Row>
         {cart.length > 0 ?  cart.map((cartItem, key) => 
-          <Col xs={24} xl={8} >
+          <Col key = {key} xs={24} xl={8} >
             <Product key={key} isInCart = {true} product = {cartItem}/>
           </Col>)
           : <h1 style = {{marginLeft: "1%"}}>Sepetiniz Boş</h1>

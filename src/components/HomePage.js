@@ -30,7 +30,7 @@ const HomePage = ({ getProducts }) => {
         <h1 style={{ marginLeft: "5%", marginTop: "10%" }}> Top Products</h1>
         <Row style={{ paddingLeft: "5%", paddingRight: "5%" }}>
           {firstTenProduct.length && firstTenProduct.map((product, key) => 
-          <Col xs={24} xl={8} style={{ paddingTop: "1%", paddingBottom: "1%" }}>
+          <Col key = {key} xs={24} xl={8} style={{ paddingTop: "1%", paddingBottom: "1%" }}>
             <Product isInHomePage = {true} key={key} product={product} />
           </Col> )}
         </Row>
