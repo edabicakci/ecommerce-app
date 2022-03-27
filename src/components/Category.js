@@ -15,11 +15,11 @@ const Category = (props) => {
   return (
     <Card
     hoverable
-    style={{ width: 300, margin: 20}}
-    cover={<div style={{ overflow: "hidden", height: "100px" , width: "100px"}}>
+    style={{ width: "100%", height: "100%", padding:"5%" }}
+    cover={<div style={{ overflow: "hidden", height: "40%" , width: "100%"}}>
     <img
       alt="example"
-      style = {{height: "100%"}}
+      style = {{width: "100%"}}
       src="https://cdn.dribbble.com/users/1142856/screenshots/5318174/icons_categories_interactivemap-13.png"
     />
   </div>}

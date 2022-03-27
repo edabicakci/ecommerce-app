@@ -3,6 +3,7 @@ import CartContext from "../contexts/CartContext";
 import Product from "./Product";
 import { baseService } from "../network/services/baseService";
 import moment from "moment";
+import { Button, Row, Col } from "antd";
 
 const Cart = ({ customerID }) => {
   const { cart, setCart } = useContext(CartContext);
@@ -32,17 +33,21 @@ const Cart = ({ customerID }) => {
     }
   };
   return (
-    <div style={{ paddingTop: 60 }}>
-      <button onClick={deleteCart}> Sepeti Boşalt</button>
-      <button onClick={orderCart}> Sipariş Ver</button>
-      {cart.length === 0 ? (
+    <>
+   
+    <Button style ={{ margin:"1%"}} className="btn" type="primary" onClick ={deleteCart}> Sepeti Boşalt </Button>
+    <Button style ={{ margin:"1%"}} className="btn" type="primary" onClick ={orderCart}> Sipariş Ver </Button>
+    <Row type="flex">
+    {cart.length === 0 ? (
         <h1>Sepetiniz Boş</h1>
-      ) : (
-        cart.map((cartItem, key) => (
-          <Product key={key} isInCart={true} product={cartItem}></Product>
-        ))
-      )}
-    </div>
+      ) :  cart.map((cartItem, key) => {
+        return <Col xs={24} xl={8} >
+            <Product key={key} isInCart = {true} product = {cartItem}/>
+        </Col>;
+      })}
+
+    </Row>
+    </>
   );
 };
 

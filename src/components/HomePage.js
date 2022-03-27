@@ -2,7 +2,7 @@ import React from "react";
 import Categories from "./Categories";
 import Product from "./Product";
 import { useState, useEffect } from "react";
-import { Row, Col } from 'antd';
+import { Row, Col } from "antd";
 
 const HomePage = ({ getProducts }) => {
   const [firstTenProduct, setFirstTenProduct] = useState([]);
@@ -22,15 +22,21 @@ const HomePage = ({ getProducts }) => {
 
   return (
     <Row>
-      <Col span={12}> <h1 style= {{marginLeft:40, marginTop: 20}}> Categories </h1><Categories /> </Col>
       <Col span={12}>
-        <div> 
-          <h1 style= {{marginLeft:40, marginTop: 20}}> Top Products</h1>
-        {firstTenProduct.length &&
-          firstTenProduct.map((product, key) => (
-            <Product key={key} product={product} />
-          ))}
-        </div>
+        <h1 style={{ marginLeft: "5%", marginTop: "1%" }}> Categories </h1>
+        <Categories />
+      </Col>
+      <Col span={12}>
+        <h1 style={{ marginLeft: "5%", marginTop: "1%" }}> Top Products</h1>
+        <Row type="flex" style={{ paddingLeft: "5%", paddingRight: "5%" }}>
+          {firstTenProduct.length && firstTenProduct.map((product, key) => {
+              return (
+                <Col xs={24} xl={8} style={{ paddingTop: "5%", paddingBottom: "5%" }}>
+                  <Product isInHomePage = {true} key={key} product={product} />
+                </Col>
+              );
+            })}
+        </Row>
       </Col>
     </Row>
   );

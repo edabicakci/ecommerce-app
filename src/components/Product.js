@@ -3,10 +3,10 @@ import "./styles.css";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import CartContext from "../contexts/CartContext";
-import { Card } from 'antd';
+import { Card, Button} from 'antd';
 
 const Product = (props) => {
-  let { product, isInCart } = props;
+  let { product, isInCart, isInHomePage } = props;
   const navigate = useNavigate();
 
   const { cart, setCart } = useContext(CartContext);
@@ -33,17 +33,19 @@ const Product = (props) => {
   return (
     <Card
     hoverable
-    style={{ width: 300, margin: 20}}
-    cover={<div style={{ overflow: "hidden", height: "100px" , width: "100px"}}>
-    <img
-      alt="example"
-      style={{ height: "100%" }}
-      src="https://image.shutterstock.com/image-vector/vector-illustration-9-archive-icons-600w-1162701376.jpg"
-    />
+    className={isInHomePage? "productInHomePage" : "product"}
+    cover={
+    <div className={isInHomePage? "imageInHomePage" : "image"}>
+      <img
+        alt="example"
+        style = {{width: "100%"}}
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Aiga_restaurant_inv.svg/1021px-Aiga_restaurant_inv.svg.png"
+        onClick = {showProductDetail}/>
   </div>}
-    onClick = {showProductDetail}>
-      <> 
-    <p>{product.name}</p>
+    actions = {isInCart ? [<Button className="btn" type="primary" onClick={() => removeFromCart(product.id)} > Sepetten Sil </Button>] 
+    : [<Button className="btn" type="primary" onClick={addCart}> Sepete Ekle </Button>]}>
+      <div onClick = {showProductDetail}> 
+        <p>{product.name}</p>
         <p>Unit Price: {product.unitPrice}</p>
         <p>Stock: {product.unitsInStock}</p>
         {isInCart ?
@@ -52,14 +54,7 @@ const Product = (props) => {
         <p> Total Price: {(product.count * product.unitPrice).toFixed(2)} TL</p> 
         </>
          : null}
-
-      <div>
-        {isInCart ? 
-          (<button onClick={() => removeFromCart(product.id)}> Sepetten Sil</button>) 
-          : ( <button onClick={addCart}> Sepete Ekle</button>)
-        }
       </div>
-      </>
   </Card> 
   );
 };

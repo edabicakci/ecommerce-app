@@ -7,7 +7,7 @@ import { baseService } from "../network/services/baseService";
 const ProductDetail = () => {
   const {cart, setCart } = useContext(CartContext);
   const [product, setProduct] = useState({})
-  const {id} = useParams()
+  const {productId} = useParams()
 
   useEffect(() => {
     getProduct()
@@ -16,7 +16,9 @@ const ProductDetail = () => {
 
   const getProduct = async() => {
     try{
-      const data = await baseService.get(`/products/${id}`)
+      console.log("id", productId);
+      const data = await baseService.get(`/products/${productId}`)
+      console.log("data", data);
       setProduct(data)
     }catch(error){
       console.log("Error", error);
@@ -25,8 +27,8 @@ const ProductDetail = () => {
 
   const addCart = () => {
     if (!cart.some((cartItem) => cartItem.id === product.id)) {
-      product = { ...product, "count": 1 };
-      setCart([...cart, product])
+      const cartProduct = { ...product, "count": 1 };
+      setCart([...cart, cartProduct])
     } else {
       let cartItem = cart.find((cartItem) => cartItem.id === product.id)
       cartItem.count += 1;

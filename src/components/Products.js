@@ -1,8 +1,8 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react';
-
 import Product from './Product'
+import {Row, Col} from "antd"
 
 const Products = ({getProducts}) => {
 const {categoryId} = useParams();
@@ -22,10 +22,13 @@ const getProductsByCategoryId = async (categoryId) => {
 }
 
   return (
-    <div>
-         <h1 className='h1'> Products </h1>
-        { productsWithCategoryId && productsWithCategoryId.map((product, key) => <Product key={key} isInCart = {false} product = {product}/>)}
-    </div>
+    <Row type="flex" gutter={16}>
+    { productsWithCategoryId && productsWithCategoryId.map((product,key) =>{
+      return <Col span={12}  style={{paddingTop: '8px', paddingBottom: '8px'}}>
+          <Product key={key} isInCart = {false} product = {product}/>
+      </Col>;
+    })}
+  </Row>
   )
 }
 
