@@ -35,7 +35,7 @@ const Product = (props) => {
     hoverable
     className={isInHomePage? "productInHomePage" : "product"}
     cover={
-    <div className={isInHomePage? "imageInHomePage" : "image"}>
+    <div className={isInHomePage? "coverInHomePage" : "cover"}>
       <img
         alt="example"
         style = {{width: "100%"}}

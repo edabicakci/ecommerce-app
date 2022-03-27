@@ -6,44 +6,20 @@
 
   .product{
     padding: 5%;
-    width: 70%;
+    width: 50%;
     height: 80%
   }
 
-  .imageInHomePage{
+  .coverInHomePage{
     overflow: hidden;
     height: 40%;
     width: 100%
   }
 
-  .image{
+  .cover{
     overflow: hidden;
     height: 10%;
     width: 20%
   }
 
-  .productDetail{
-    background: rgb(255, 255, 255);
-    position: relative;
-    border-radius: 5px;
-    padding: 20px;
-    margin: 10px;
-    width: 47%;
-    color: rgb(63, 20, 163);
-    flex-basis: width;
-    background-color: rgb(165, 230, 230);
-  }
-
-
-  .order {
-    background: rgb(255, 255, 255);
-    position: relative;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px;
-    width: 90%;
-    color: rgb(63, 20, 163);
-    flex-basis: width;
-    background-color: rgb(165, 230, 230);
-  }
 

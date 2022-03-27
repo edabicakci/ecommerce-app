@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
 import  CartContext  from "../contexts/CartContext";
 import { baseService } from "../network/services/baseService";
+import { Card, Button } from "antd"
 
 const ProductDetail = () => {
   const {cart, setCart } = useContext(CartContext);
@@ -16,9 +17,7 @@ const ProductDetail = () => {
 
   const getProduct = async() => {
     try{
-      console.log("id", productId);
       const data = await baseService.get(`/products/${productId}`)
-      console.log("data", data);
       setProduct(data)
     }catch(error){
       console.log("Error", error);
@@ -37,18 +36,28 @@ const ProductDetail = () => {
   };
 
   return (
+    <Card
+      hoverable
+      className="product"
+      cover={
+        <div className="cover">
+          <img
+            alt="example"
+            style = {{width: "100%"}}
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Aiga_restaurant_inv.svg/1021px-Aiga_restaurant_inv.svg.png"
+          />
+          </div>} 
+          actions ={[<Button className="btn" type="primary" onClick={addCart}> Sepete Ekle </Button>]}>
+            <h1>{product.name}</h1>
+            <p> Unit Price: {product.unitPrice}</p>
+            <p> Stock: {product.unitsInStock}</p>
+            <p> Quantity per Unit: {product.quantityPerUnit}</p>
+            <p>
+              Supplier Information: {product.supplier ?( product.supplier?.companyName)
+              : "-"}
+            </p>
+    </Card>
     
-    <div className="productDetail">
-      <h1>{product.name}</h1>
-      <p> Unit Price: {product.unitPrice}</p>
-      <p> Stock: {product.unitsInStock}</p>
-      <p> Quantity per Unit: {product.quantityPerUnit}</p>
-      <p>
-        Supplier Information: {product.supplier?.companyName}{" "}
-        {product.supplier?.contactName} {product.supplier?.address?.phone}{" "}
-      </p>
-      <button onClick={addCart}> Sepete Ekle</button>
-    </div>
   );
 };
 
