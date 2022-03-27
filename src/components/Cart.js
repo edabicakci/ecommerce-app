@@ -13,7 +13,7 @@ const Cart = ({ customerID }) => {
   };
 
   const orderCart = async () => {
-    if (cart) {
+    if (cart.length > 0) {
       try {
         const date = moment().format();
         const newOrder = {
@@ -34,8 +34,8 @@ const Cart = ({ customerID }) => {
   };
   return (
     <div style={{marginTop: "5%"}}>
-      <Button style ={{ margin:"1%"}} className="btn" type="primary" onClick ={deleteCart}> Sepeti Boşalt </Button>
-      <Button style ={{ margin:"1%"}} className="btn" type="primary" onClick ={orderCart}> Sipariş Ver </Button>
+      <Button style ={{ margin:"1%", background: "black", borderColor: "black"}}  className="btn" type="primary" onClick ={deleteCart}> Sepeti Boşalt </Button>
+      <Button style ={{ margin:"1%", background: "black", borderColor: "black"}} className="btn" type="primary" onClick ={orderCart}> Sipariş Ver </Button>
       <Row>
         {cart.length > 0 ?  cart.map((cartItem, key) => 
           <Col xs={24} xl={8} >

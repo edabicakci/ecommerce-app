@@ -33,7 +33,7 @@ const Orders = ({ custId }) => {
   return (
     <Row style = {{marginTop: "6%"}}>
       {orders.length > 0 ? orders.map((order, key) =>   
-        <Col xs={24} xl={8} > 
+        <Col xs={24} xl={8}> 
           <Order key={key} order={order}/> 
         </Col>)
         : <h1>Henüz Sipariş Vermediniz!</h1>

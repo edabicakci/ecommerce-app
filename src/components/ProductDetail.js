@@ -61,7 +61,7 @@ const ProductDetail = () => {
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Aiga_restaurant_inv.svg/1021px-Aiga_restaurant_inv.svg.png"
           />
           </div>} 
-          actions ={[<Button className="btn" type="primary" onClick={addCart}> Sepete Ekle </Button>]}>
+          actions ={[<Button style= {{background: "black", borderColor: "black" }} className="btn" type="primary" onClick={addCart}> Sepete Ekle </Button>]}>
             <h1>{product.name}</h1>
             <p> Unit Price: {product.unitPrice}</p>
             <p> Stock: {product.unitsInStock}</p>

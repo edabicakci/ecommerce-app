@@ -56,8 +56,8 @@ const Product = (props) => {
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Aiga_restaurant_inv.svg/1021px-Aiga_restaurant_inv.svg.png"
         onClick = {showProductDetail}/>
   </div>}
-    actions = {isInCart ? [<Button className="btn" type="primary" onClick={() => removeFromCart(product.id)} > Sepetten Sil </Button>] 
-    : [<Button className="btn" type="primary" onClick={addCart}> Sepete Ekle </Button>]}>
+    actions = {isInCart ? [<Button style= {{background: "black", borderColor: "black" }} className="btn" type="primary" onClick={() => removeFromCart(product.id)} > Sepetten Sil </Button>] 
+    : [<Button style= {{background: "black", borderColor: "black" }} className="btn" type="primary" onClick={addCart}> Sepete Ekle </Button>]}>
       <div onClick = {showProductDetail}> 
         <p>{product.name}</p>
         <p>Unit Price: {product.unitPrice}</p>

@@ -30,16 +30,16 @@ const Order = ({ order }) => {
   }
   return (
     <Card>
-      <p> Order Date: {date}</p>
-      <p> Products in Order:
+      <h3> Order Date: {date}</h3>
+      <h3> Products in Order:
         {order.details?.map((detail, key) => (
          
           <p key={key}>
             {detail.name}: <span style= {{color:"blue"}}> {detail.unitPrice} X {detail.count} </span>
           </p>
         ))}
-      </p>
-      <p> Total Payment: { totalPayment } TL</p>
+      </h3>
+      <h3> Total Payment: { totalPayment } TL</h3>
     </Card>
   );
 };
