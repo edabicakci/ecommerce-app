@@ -28,17 +28,19 @@ const Orders = ({ customerID }) => {
   };
 
   return (
+<>  
+    {orders.length > 0 ?
     <List
-    style = {{marginTop: "5%"}}
+    style = {{marginTop: "6%"}}
     itemLayout="horizontal"
     dataSource={orders}
     renderItem={order => (
       <List.Item>
-       <Order order = {order} ></Order>
+        <Order order = {order} ></Order>
       </List.Item>
     )}
-  />
-    
+  /> : <h1 style = {{marginTop: "6%"}} >Henüz Sipariş Vermediniz!</h1>}
+   </>
   );
 };
 

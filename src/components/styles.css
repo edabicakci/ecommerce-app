@@ -6,8 +6,8 @@
 
   .product{
     padding: 5%;
-    width: 50%;
-    height: 80%
+    width: 80%;
+    height: 90%
   }
 
   .coverInHomePage{
@@ -18,8 +18,8 @@
 
   .cover{
     overflow: hidden;
-    height: 10%;
-    width: 20%
+    height: 40%;
+    width: 40%
   }
 
 

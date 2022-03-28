@@ -45,8 +45,9 @@ const Product = (props) => {
 
   return (
   <>
-    <Card
-    hoverable
+
+  <Card
+  hoverable
     className={isInHomePage? "productInHomePage" : "product"}
     cover={
     <div className={isInHomePage? "coverInHomePage" : "cover"}>
@@ -55,10 +56,10 @@ const Product = (props) => {
         style = {{width: "100%"}}
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Aiga_restaurant_inv.svg/1021px-Aiga_restaurant_inv.svg.png"
         onClick = {showProductDetail}/>
-  </div>}
-    actions = {isInCart ? [<Button style= {{background: "black", borderColor: "black" }} className="btn" type="primary" onClick={() => removeFromCart(product.id)} > Sepetten Sil </Button>] 
-    : [<Button style= {{background: "black", borderColor: "black" }} className="btn" type="primary" onClick={addCart}> Sepete Ekle </Button>]}>
-      <div onClick = {showProductDetail}> 
+ </div>}
+ >
+   <div style= {{display: "flex", flexDirection: "row"}}>
+   <div onClick = {showProductDetail}  style= {{flexGrow: "5", position: "relative"}}> 
         <p>{product.name}</p>
         <p>Unit Price: {product.unitPrice}</p>
         <p>Stock: {product.unitsInStock}</p>
@@ -69,7 +70,13 @@ const Product = (props) => {
         </>
          : null}
       </div>
-    </Card> 
+      <div  style= {{flexGrow: "5", position: "relative"}}>
+      {isInCart ? [<Button style= {{background: "black", borderColor: "black"}} className="btn" type="primary" onClick={() => removeFromCart(product.id)} > Sepetten Sil </Button>] 
+    : [<Button style= {{background: "black", borderColor: "black"}} className="btn" type="primary" onClick={addCart}> Sepete Ekle </Button>]}
+      </div>
+      </div>
+  </Card>
+    
     <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
           <p>Ürün stoklarda kalmamıştır!</p>
     </Modal>
