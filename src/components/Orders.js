@@ -19,7 +19,7 @@ const Orders = ({ customerID }) => {
       const filteredData = orderData.filter(
         (order) => order.customerId === customerID
       );
-      console.log("orderData", filteredData);
+      console.log("filteredData", filteredData);
       setOrders(filteredData);
 
     } catch (error) {

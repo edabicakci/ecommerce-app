@@ -29,9 +29,9 @@ const HomePage = ({ getProducts }) => {
       <Col span={12}>
         <h1 style={{ marginLeft: "5%", marginTop: "10%" }}> Top Products</h1>
         <Row style={{ paddingLeft: "5%", paddingRight: "5%" }}>
-          {firstTenProduct.length && firstTenProduct.map((product, key) => 
+          {firstTenProduct.length > 0 && firstTenProduct.map((product, key) => 
           <Col key = {key} xs={24} xl={8} style={{ paddingTop: "1%", paddingBottom: "1%" }}>
-            <Product isInHomePage = {true} key={key} product={product} />
+            <Product key={key} isInHomePage = {true} product={product} />
           </Col> )}
         </Row>
       </Col>
