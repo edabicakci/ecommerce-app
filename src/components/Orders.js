@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { baseService } from "../network/services/baseService";
 import Order from "./Order";
-import { Row, Col } from "antd";
+import { List } from "antd";
 
 const Orders = ({ customerID }) => {
   const [orders, setOrders] = useState([]);
@@ -28,14 +28,17 @@ const Orders = ({ customerID }) => {
   };
 
   return (
-    <Row style = {{marginTop: "6%"}}>
-      {orders.length > 0 ? orders.map((order, key) =>   
-        <Col key = {key} xs={24} xl={8}> 
-          <Order key={key} order={order}/> 
-        </Col>)
-        : <h1>Henüz Sipariş Vermediniz!</h1>
-      }
-    </Row>
+    <List
+    style = {{marginTop: "5%"}}
+    itemLayout="horizontal"
+    dataSource={orders}
+    renderItem={order => (
+      <List.Item>
+       <Order order = {order} ></Order>
+      </List.Item>
+    )}
+  />
+    
   );
 };
 

@@ -24,7 +24,7 @@ const getProductsByCategoryId = async (categoryId) => {
   return (
     <Row style = {{marginTop: "5%"}}>
       {productsWithCategoryId && productsWithCategoryId.map((product,key) =>
-        <Col xs={24} xl={8} >
+        <Col key = {key} xs={24} xl={8} >
           <Product key={key} isInCart = {false} product = {product}/>
       </Col>)}
     </Row>
