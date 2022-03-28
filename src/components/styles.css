@@ -10,6 +10,13 @@
     height: 90%
   }
 
+  .productDetail{
+    margin-top: 6%;
+    padding: 5%;
+    width: 25%;
+    height: 25%
+  }
+
   .coverInHomePage{
     overflow: hidden;
     height: 40%;

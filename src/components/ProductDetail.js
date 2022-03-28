@@ -52,7 +52,7 @@ const ProductDetail = () => {
     <> 
     <Card
       hoverable
-      className="product"
+      className="productDetail"
       cover={
         <div className="cover">
           <img

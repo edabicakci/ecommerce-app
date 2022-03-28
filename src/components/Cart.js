@@ -39,7 +39,7 @@ const Cart = ({ customerID }) => {
       <Button style ={{ margin:"1%", background: "black", borderColor: "black"}} className="btn" type="primary" onClick ={orderCart}> Sipariş Ver </Button>
       <Row>
         {cart.length > 0 ?  cart.map((cartItem, key) => 
-          <Col key = {key} xs={24} xl={8} >
+          <Col key = {key} xs={8} xl={4} >
             <Product key={key} isInCart = {true} product = {cartItem}/>
           </Col>)
           : <h1 style = {{marginLeft: "1%"}}>Sepetiniz Boş</h1>
